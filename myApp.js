@@ -5,7 +5,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 let Person = require('./models/person.js');
 
 const createAndSavePerson = (done) => {
-    done(null /*, data*/ );
+    let document = new Person({ name: 'Imdad', age: 19, favoriteFoods: ['Rice', 'Hamburger'] });
+    document.save((err, data) => {
+        done(err, data);
+    });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
